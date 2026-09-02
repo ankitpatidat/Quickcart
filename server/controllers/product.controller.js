@@ -89,6 +89,9 @@ export const getProductController = async(request,response)=>{
             data : data
         })
     } catch (error) {
+
+        // console.log("❌ GET PRODUCT ERROR:");
+        // console.error(error);
         return response.status(500).json({
             message : error.message || error,
             error : true,

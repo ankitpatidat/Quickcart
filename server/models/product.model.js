@@ -1,67 +1,154 @@
 import mongoose from "mongoose";
 
-const productSchema = new mongoose.Schema({
-    name : {
-        type : String,
-    },
-    image : {
-        type : Array,
-        default : []
-    },
-    category : [
-        {
-            type : mongoose.Schema.ObjectId,
-            ref : 'category'
+const productSchema = new mongoose.Schema(
+    {
+        name: {
+            type: String,
+        },
+
+        image: {
+            type: Array,
+            default: []
+        },
+
+        category: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "category"
+            }
+        ],
+
+        subCategory: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "subCategory"
+            }
+        ],
+
+        unit: {
+            type: String,
+            default: ""
+        },
+
+        stock: {
+            type: Number,
+            default: null
+        },
+
+        price: {
+            type: Number,
+            default: null
+        },
+
+        discount: {
+            type: Number,
+            default: null
+        },
+
+        description: {
+            type: String,
+            default: ""
+        },
+
+        more_details: {
+            type: Object,
+            default: {}
+        },
+
+        publish: {
+            type: Boolean,
+            default: true
         }
-    ],
-    subCategory : [
-        {
-            type : mongoose.Schema.ObjectId,
-            ref : 'subCategory'
-        }
-    ],
-    unit : {
-        type : String,
-        default : ""
     },
-    stock : {
-        type : Number,
-        default : null
-    },
-    price : {
-        type : Number,
-        defualt : null
-    },
-    discount : {
-        type : Number,
-        default : null
-    },
-    description : {
-        type : String,
-        default : ""
-    },
-    more_details : {
-        type : Object,
-        default : {}
-    },
-    publish : {
-        type : Boolean,
-        default : true
+    {
+        timestamps: true
     }
-},{
-    timestamps : true
-})
-
-//create a text index
-productSchema.index({
-    name  : "text",
-    description : 'text'
-},{
-    name : 10,
-    description : 5
-})
+);
 
 
-const ProductModel = mongoose.model('product',productSchema)
+// Text Index
+productSchema.index(
+    {
+        name: "text",
+        description: "text"
+    },
+    {
+        weights: {
+            name: 10,
+            description: 5
+        }
+    }
+);
 
-export default ProductModel
+const ProductModel = mongoose.model("product", productSchema);
+
+export default ProductModel;
+
+
+// import mongoose from "mongoose";
+
+// const productSchema = new mongoose.Schema({
+//     name : {
+//         type : String,
+//     },
+//     image : {
+//         type : Array,
+//         defualt : []
+//     },
+//     category : [
+//         {
+//             type : mongoose.Schema.ObjectId,
+//             ref : 'category'
+//         }
+//     ],
+//     subCategory : [
+//         {
+//             type : mongoose.Schema.ObjectId,
+//             ref : 'subCategory'
+//         }
+//     ],
+//     unit : {
+//         type : String,
+//         default : ""
+//     },
+//     stock : {
+//         type : Number,
+//         default : null
+//     },
+//     price : {
+//         type : Number,
+//         defualt : null
+//     },
+//     discount : {
+//         type : Number,
+//         defualt : null
+//     },
+//     description : {
+//         type : String,
+//         defualt : ""
+//     },
+//     more_details : {
+//         type : Object,
+//         defualt : {}
+//     },
+//     publish : {
+//         type : Boolean,
+//         defualt : true
+//     }
+// },{
+//     timestamps : true
+// })
+
+// //create a text index
+// productSchema.index({
+//     name  : "text",
+//     description : 'text'
+// },{
+//     name : 10,
+//     description : 5
+// })
+
+
+// const ProductModel = mongoose.model('product',productSchema)
+
+// export default ProductModel

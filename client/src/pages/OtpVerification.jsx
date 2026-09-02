@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 // import { FaRegEyeSlash } from "react-icons/fa6";
 // import { FaRegEye } from "react-icons/fa6";
 import toast from 'react-hot-toast';
@@ -109,7 +109,7 @@ const OtpVerification = () => {
                 </form>
 
                 <p>
-                    Already have account? <Link to={"/login"} className='font-semibold text-green-700 hover:text-green-800'>Login</Link>
+                    Already have account? <Link to={"/login"} className='font-semibold text-green-700 hover:text-green-800'> Login</Link>
                 </p>
             </div>
         </section>

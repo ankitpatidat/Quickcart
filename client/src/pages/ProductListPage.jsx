@@ -1,3 +1,5 @@
+
+
 import  { useEffect, useState } from 'react'
 import Axios from '../utils/Axios'
 import SummaryApi from '../common/SummaryApi'
@@ -42,6 +44,7 @@ const ProductListPage = () => {
       const { data: responseData } = response
 
       if (responseData.success) {
+        
         if (responseData.page == 1) {
           setData(responseData.data)
         } else {

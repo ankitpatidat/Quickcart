@@ -463,7 +463,7 @@ export async function refreshToken(request,response){
             })
         }
 
-        const userId = verifyToken?._id
+        const userId = verifyToken?.id
 
         const newAccessToken = await generatedAccessToken(userId)
 
@@ -499,7 +499,6 @@ export async function userDetails(request,response){
     try {
         const userId  = request.userId
 
-        console.log(userId)
 
         const user = await UserModel.findById(userId).select('-password -refresh_token')
 
