@@ -2,9 +2,9 @@ import axios from "axios";
 import SummaryApi , { baseURL } from "../common/SummaryApi";
 
 const Axios = axios.create({
-    baseURL : baseURL,
-    withCredentials : true
-})
+    baseURL: import.meta.env.VITE_API_URL,
+    withCredentials: true
+});
 
 //sending access token in the header
 Axios.interceptors.request.use(
